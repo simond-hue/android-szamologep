@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     public Button minusz;
     public Button szorzas;
     public String input = "";
+    public boolean plus = false;
+    public boolean minus = false;
+    public boolean times = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,96 +46,123 @@ public class MainActivity extends AppCompatActivity {
         egy.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 input+="1";
-                eredmeny.setText(input);
+                eredmenyText.setText(input);
             }
         });
         ketto.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 input+="2";
-                eredmeny.setText(input);
+                eredmenyText.setText(input);
             }
         });
         harom.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 input+="3";
-                eredmeny.setText(input);
+                eredmenyText.setText(input);
             }
         });
         negy.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 input+="4";
-                eredmeny.setText(input);
+                eredmenyText.setText(input);
             }
         });
         ot.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 input+="5";
-                eredmeny.setText(input);
+                eredmenyText.setText(input);
             }
         });
         hat.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 input+="6";
-                eredmeny.setText(input);
+                eredmenyText.setText(input);
             }
         });
         het.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 input+="7";
-                eredmeny.setText(input);
+                eredmenyText.setText(input);
             }
         });
         nyolc.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 input+="8";
-                eredmeny.setText(input);
+                eredmenyText.setText(input);
             }
         });
         kilenc.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 input+="9";
-                eredmeny.setText(input);
+                eredmenyText.setText(input);
             }
         });
         clear.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 input="";
-                eredmeny.setText(input);
+                eredmenyText.setText(input);
             }
         });
         nulla.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 input+="0";
-                eredmeny.setText(input);
+                eredmenyText.setText(input);
             }
         });
         egyenlo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                if(plus){
+                    int elso_szam = Integer.parseInt(input.split("+")[0]);
+                    int masodik_szam = Integer.parseInt(input.split("+")[1]);
 
+                    int eredmeny = elso_szam+masodik_szam;
+                    eredmenyText.setText(eredmeny);
+                }
+                if(minus){
+                    int elso_szam = Integer.parseInt(input.split("-")[0]);
+                    int masodik_szam = Integer.parseInt(input.split("-")[1]);
+
+                    int eredmeny = elso_szam-masodik_szam;
+                    eredmenyText.setText(eredmeny);
+                }
+                if(minus){
+                    int elso_szam = Integer.parseInt(input.split("*")[0]);
+                    int masodik_szam = Integer.parseInt(input.split("*")[1]);
+
+                    int eredmeny = elso_szam*masodik_szam;
+                    eredmenyText.setText(eredmeny);
+                }
+                input = "";
+                plus = false;
+                minus = false;
+                times = false;
             }
         });
         plusz.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 input+="+";
-                eredmeny.setText(input);
+                eredmenyText.setText(input);
                 minusz.setEnabled(false);
                 szorzas.setEnabled(false);
+                plus = true;
             }
         });
         minusz.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 input+="-";
-                eredmeny.setText(input);
+                eredmenyText.setText(input);
                 plusz.setEnabled(false);
                 szorzas.setEnabled(false);
+                minus = true;
             }
         });
         szorzas.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 input+="*";
-                eredmeny.setText(input);
+                eredmenyText.setText(input);
                 minusz.setEnabled(false);
                 plusz.setEnabled(false);
+                times = true;
             }
         });
 
